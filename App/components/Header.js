@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 10,
+    backgroundColor: "#fff",
   },
   navIcons: {
     flexDirection: "row",

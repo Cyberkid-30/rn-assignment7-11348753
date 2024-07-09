@@ -1,15 +1,20 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import Header from "../components/Header";
 import CardContainer from "../components/CardContainer";
 
-function HomeScreen({handlePress}) {
+function HomeScreen({ handlePress }) {
   return (
-    <View>
+    <View style={styles.homeContainer}>
       <Header />
       <CardContainer handlePress={handlePress} />
     </View>
   );
 }
+const styles = StyleSheet.create({
+  homeContainer: {
+    backgroundColor: "#fff",
+  },
+});
 
 export default HomeScreen;

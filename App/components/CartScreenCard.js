@@ -4,14 +4,16 @@ import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 function CartScreenCard({ item, onDelete }) {
   return (
     <View style={styles.cardContainer}>
-      <Image style={{ height: "auto" }} source={item.image} />
+      <Image style={styles.image} source={{ uri: item.image }} />
       <View style={styles.cardContent}>
         <Text
           style={{ fontWeight: 500, fontSize: 18, textTransform: "uppercase" }}
         >
-          {item.name}
+          {item.title}
         </Text>
-        <Text style={{ color: "gray" }}>{item.description}</Text>
+        <Text style={{ color: "gray" }}>
+          {item.description.substring(0, 50)}
+        </Text>
         <Text style={{ color: "#E0A75E" }}>${item.price}</Text>
       </View>
       <TouchableOpacity
@@ -31,6 +33,10 @@ const styles = StyleSheet.create({
     height: 170,
     gap: 10,
     marginBottom: 10,
+  },
+  image: {
+    height: 170,
+    width: "50%",
   },
   cardContent: {
     justifyContent: "center",

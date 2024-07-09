@@ -11,14 +11,16 @@ import {
 function Card({ item, onPress }) {
   return (
     <View style={styles.card}>
-      <ImageBackground style={styles.background} source={item.image}>
+      <ImageBackground style={styles.background} source={{ uri: item.image }}>
         <TouchableOpacity style={styles.add} onPress={onPress}>
           <Image source={require("../assets/add_circle.png")} />
         </TouchableOpacity>
       </ImageBackground>
       <View>
-        <Text style={{ fontWeight: "600" }}>{item.name}</Text>
-        <Text style={{ color: "gray" }}>{item.description}</Text>
+        <Text style={{ fontWeight: "600" }}>{item.title}</Text>
+        <Text style={{ color: "gray" }}>
+          {item.description.substring(0, 50)}
+        </Text>
         <Text style={{ color: "#E0A75E" }}>${item.price}</Text>
       </View>
     </View>

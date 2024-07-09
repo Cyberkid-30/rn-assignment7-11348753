@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, Image, FlatList } from "react-native";
 import data from "../Items";
 import Card from "./Card";
 
 function CardContainer({ handlePress }) {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getItems = () => {
+      try {
+        fetch("https://fakestoreapi.com/products")
+          .then((res) => res.json())
+          .then((items) => setData(items));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getItems();
+  });
+
+  console.log(data);
+
   return (
     <View style={styles.cardContainer}>
       <View style={styles.containerHeader}>
