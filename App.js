@@ -79,6 +79,5 @@ const styles = StyleSheet.create({
     gap: 30,
     backgroundColor: "#fff",
     paddingTop: 20,
-    paddingHorizontal: 10,
   },
 });

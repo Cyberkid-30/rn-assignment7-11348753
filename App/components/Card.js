@@ -28,7 +28,7 @@ function Card({ item, onPress }) {
 }
 const styles = StyleSheet.create({
   card: {
-    width: 180,
+    width: "47%",
     // backgroundColor: "dodgerblue",
     paddingBottom: 10,
   },

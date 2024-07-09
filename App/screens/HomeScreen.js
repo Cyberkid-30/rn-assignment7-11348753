@@ -14,6 +14,7 @@ function HomeScreen({ handlePress }) {
 const styles = StyleSheet.create({
   homeContainer: {
     backgroundColor: "#fff",
+    paddingHorizontal: 20,
   },
 });
 
