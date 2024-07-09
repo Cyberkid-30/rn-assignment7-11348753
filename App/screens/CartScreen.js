@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // backgroundColor: "dodgerblue",
     position: "relative",
+    paddingHorizontal: 20,
   },
   header: {
     height: 60,
