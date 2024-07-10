@@ -1,15 +1,18 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { StyleSheet, View, Text } from "react-native";
 import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./App/screens/HomeScreen";
 import CartScreen from "./App/screens/CartScreen";
-import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
-  const [cartItems, setCartItems] = useState([{}]);
+  const [cartItems, setCartItems] = useState([]);
   const Tab = createBottomTabNavigator();
+  const Drawer = createDrawerNavigator();
 
   const TabNavigator = () => {
     return (
@@ -26,6 +29,20 @@ export default function App() {
           )}
         </Tab.Screen>
       </Tab.Navigator>
+    );
+  };
+
+  const MyDrawer = () => {
+    return (
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Store" component={CartScreen} />
+        <Drawer.Screen name="Locations" component={CartScreen} />
+        <Drawer.Screen name="Blog" component={CartScreen} />
+        <Drawer.Screen name="Jewelery" component={CartScreen} />
+        <Drawer.Screen name="Electronic" component={CartScreen} />
+        <Drawer.Screen name="Clothing" component={CartScreen} />
+      </Drawer.Navigator>
     );
   };
 
@@ -64,11 +81,13 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      <NavigationContainer>
-        <TabNavigator />
-      </NavigationContainer>
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <NavigationContainer>
+          <MyDrawer />
+        </NavigationContainer>
+      </View>
+    </GestureHandlerRootView>
   );
 }
 

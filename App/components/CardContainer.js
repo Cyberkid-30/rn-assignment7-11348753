@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, Image, FlatList } from "react-native";
-import data from "../Items";
 import Card from "./Card";
 
 function CardContainer({ handlePress }) {
@@ -19,8 +18,6 @@ function CardContainer({ handlePress }) {
 
     getItems();
   });
-
-  console.log(data);
 
   return (
     <View style={styles.cardContainer}>
