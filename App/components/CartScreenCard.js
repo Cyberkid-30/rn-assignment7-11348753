@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   removeBtn: {
     position: "absolute",
     bottom: 20,
-    right: 30,
+    right: 3,
   },
 });
 export default CartScreenCard;
