@@ -7,12 +7,7 @@ function HomeScreen({ handlePress, handleSelect }) {
   return (
     <View style={styles.homeContainer}>
       <Header />
-      <CardContainer
-        handlePress={handlePress}
-        handleSelect={() => {
-          handleSelect();
-        }}
-      />
+      <CardContainer handlePress={handlePress} handleSelect={handleSelect} />
     </View>
   );
 }

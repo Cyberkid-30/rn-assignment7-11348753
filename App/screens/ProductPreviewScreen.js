@@ -3,21 +3,19 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Header from "../components/Header";
 import { donts } from "../Don'ts";
-import {  ScrollView } from "react-native-gesture-handler";
+import { ScrollView } from "react-native-gesture-handler";
 import DontItem from "../components/DontItem";
 
-function ProductPreviewScreen(props) {
+function ProductPreviewScreen({ item }) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.ScrollView}>
         <Header />
-        <Image source={require("../assets/dress1.png")} style={styles.image} />
+        <Image source={{ uri: item.image }} style={styles.image} />
         <View style={styles.productInfo}>
-          <Text style={styles.productTitle}>LAMEREI</Text>
-          <Text style={{ color: "gray" }}>
-            Recycle Bouncle Knit Cardigan Pink
-          </Text>
-          <Text style={{ color: "#E0A75E", fontSize: 24 }}>$120</Text>
+          <Text style={styles.productTitle}>{item.title}</Text>
+          <Text style={{ color: "gray" }}>{item.description}</Text>
+          <Text style={{ color: "#E0A75E", fontSize: 24 }}>${item.price}</Text>
         </View>
         <View style={styles.wrapper}>
           <Text>MATERIALS</Text>

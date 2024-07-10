@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   View,
@@ -9,10 +10,13 @@ import {
 } from "react-native";
 
 function Card({ item, onPress, onSelect }) {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.card}>
       <TouchableOpacity
         onPress={() => {
+          navigation.navigate("Preview");
           onSelect();
         }}
       >

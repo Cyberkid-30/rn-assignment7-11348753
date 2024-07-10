@@ -35,6 +35,19 @@ export default function App() {
   //   );
   // };
 
+  const handleDelete = (id) => {
+    const newCartItems = cartItems.filter((item) => item.id !== id);
+    setCartItems(newCartItems);
+  };
+
+  const handlePressEvent = (item) => {
+    setCartItems([...cartItems, item]);
+  };
+
+  const handleOnSelect = (item) => {
+    setSelectedItem(item);
+  };
+
   const MyDrawer = () => {
     return (
       <Drawer.Navigator>
@@ -42,7 +55,7 @@ export default function App() {
           {() => (
             <HomeScreen
               handlePress={(item) => handlePressEvent(item)}
-              handleSelect={(item) => setSelectedItem(item)}
+              handleSelect={(item) => handleOnSelect(item)}
             />
           )}
         </Drawer.Screen>
@@ -58,7 +71,7 @@ export default function App() {
         <Drawer.Screen name="Blog" component={CartScreen} />
         <Drawer.Screen name="Jewelery" component={CartScreen} />
         <Drawer.Screen name="Electronic" component={CartScreen} />
-        <Drawer.Screen name="Clothing">
+        <Drawer.Screen name="Preview">
           {() => <ProductPreviewScreen item={selectedItem} />}
         </Drawer.Screen>
       </Drawer.Navigator>
@@ -90,22 +103,11 @@ export default function App() {
     saveItems();
   }, [cartItems]);
 
-  const handleDelete = (id) => {
-    const newCartItems = cartItems.filter((item) => item.id !== id);
-    setCartItems(newCartItems);
-  };
-
-  const handlePressEvent = (item) => {
-    setCartItems([...cartItems, item]);
-  };
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <NavigationContainer>
-          <MyDrawer />
-        </NavigationContainer>
-      </View>
+      <NavigationContainer style={styles.container}>
+        <MyDrawer />
+      </NavigationContainer>
     </GestureHandlerRootView>
   );
 }

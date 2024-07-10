@@ -37,7 +37,7 @@ function CartScreen({ onDelete, cartItems }) {
       <View style={styles.totalPrice}>
         <Text style={{ fontSize: 20, letterSpacing: 2 }}>EST.TOTAL</Text>
         <Text style={{ fontSize: 20, color: "#E0A75E", letterSpacing: 2 }}>
-          $360
+          ${cartItems.reduce((total, item) => total + item.price, 0)}
         </Text>
       </View>
 
