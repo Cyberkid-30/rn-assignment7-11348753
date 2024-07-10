@@ -8,14 +8,20 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-function Card({ item, onPress }) {
+function Card({ item, onPress, onSelect }) {
   return (
     <View style={styles.card}>
-      <ImageBackground style={styles.background} source={{ uri: item.image }}>
-        <TouchableOpacity style={styles.add} onPress={onPress}>
-          <Image source={require("../assets/add_circle.png")} />
-        </TouchableOpacity>
-      </ImageBackground>
+      <TouchableOpacity
+        onPress={() => {
+          onSelect();
+        }}
+      >
+        <ImageBackground style={styles.background} source={{ uri: item.image }}>
+          <TouchableOpacity style={styles.add} onPress={onPress}>
+            <Image source={require("../assets/add_circle.png")} />
+          </TouchableOpacity>
+        </ImageBackground>
+      </TouchableOpacity>
       <View>
         <Text style={{ fontWeight: "600" }}>{item.title}</Text>
         <Text style={{ color: "gray" }}>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, Image, FlatList } from "react-native";
 import Card from "./Card";
 
-function CardContainer({ handlePress }) {
+function CardContainer({ handlePress, handleSelect }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -35,7 +35,11 @@ function CardContainer({ handlePress }) {
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <Card item={item} onPress={() => handlePress(item)} />
+          <Card
+            item={item}
+            onPress={() => handlePress(item)}
+            onSelect={() => handleSelect(item)}
+          />
         )}
         keyExtractor={(item) => item.id}
         numColumns={2}

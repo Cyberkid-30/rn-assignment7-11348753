@@ -3,11 +3,16 @@ import { Text, View, StyleSheet } from "react-native";
 import Header from "../components/Header";
 import CardContainer from "../components/CardContainer";
 
-function HomeScreen({ handlePress }) {
+function HomeScreen({ handlePress, handleSelect }) {
   return (
     <View style={styles.homeContainer}>
       <Header />
-      <CardContainer handlePress={handlePress} />
+      <CardContainer
+        handlePress={handlePress}
+        handleSelect={() => {
+          handleSelect();
+        }}
+      />
     </View>
   );
 }

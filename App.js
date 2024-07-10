@@ -8,40 +8,59 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./App/screens/HomeScreen";
 import CartScreen from "./App/screens/CartScreen";
+import ProductPreviewScreen from "./App/screens/ProductPreviewScreen";
 
 export default function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [selectedItem, setSelectedItem] = useState();
+
   const Tab = createBottomTabNavigator();
   const Drawer = createDrawerNavigator();
 
-  const TabNavigator = () => {
+  // const TabNavigator = () => {
+  //   return (
+  //     <Tab.Navigator>
+  //       <Tab.Screen name="Home">
+  //         {() => <HomeScreen handlePress={(item) => handlePressEvent(item)} />}
+  //       </Tab.Screen>
+  //       <Tab.Screen name="Cart">
+  //         {() => (
+  //           <CartScreen
+  //             cartItems={cartItems}
+  //             onDelete={(id) => handleDelete(id)}
+  //           />
+  //         )}
+  //       </Tab.Screen>
+  //     </Tab.Navigator>
+  //   );
+  // };
+
+  const MyDrawer = () => {
     return (
-      <Tab.Navigator>
-        <Tab.Screen name="Home">
-          {() => <HomeScreen handlePress={(item) => handlePressEvent(item)} />}
-        </Tab.Screen>
-        <Tab.Screen name="Cart">
+      <Drawer.Navigator>
+        <Drawer.Screen name="Store">
+          {() => (
+            <HomeScreen
+              handlePress={(item) => handlePressEvent(item)}
+              handleSelect={(item) => setSelectedItem(item)}
+            />
+          )}
+        </Drawer.Screen>
+        <Drawer.Screen name="Cart">
           {() => (
             <CartScreen
               cartItems={cartItems}
               onDelete={(id) => handleDelete(id)}
             />
           )}
-        </Tab.Screen>
-      </Tab.Navigator>
-    );
-  };
-
-  const MyDrawer = () => {
-    return (
-      <Drawer.Navigator>
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Store" component={CartScreen} />
+        </Drawer.Screen>
         <Drawer.Screen name="Locations" component={CartScreen} />
         <Drawer.Screen name="Blog" component={CartScreen} />
         <Drawer.Screen name="Jewelery" component={CartScreen} />
         <Drawer.Screen name="Electronic" component={CartScreen} />
-        <Drawer.Screen name="Clothing" component={CartScreen} />
+        <Drawer.Screen name="Clothing">
+          {() => <ProductPreviewScreen item={selectedItem} />}
+        </Drawer.Screen>
       </Drawer.Navigator>
     );
   };
@@ -94,8 +113,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
-    gap: 30,
     backgroundColor: "#fff",
     paddingTop: 20,
   },
