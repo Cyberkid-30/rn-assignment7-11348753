@@ -20,7 +20,7 @@ function CartScreen({ onDelete, cartItems }) {
         />
       </View>
 
-      <View>
+      <View paddingHorizontal={20}>
         <Text style={styles.cardContainerText}>CHECKOUT</Text>
         <FlatList
           data={cartItems}
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // backgroundColor: "dodgerblue",
     position: "relative",
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
   },
   header: {
     height: 60,
